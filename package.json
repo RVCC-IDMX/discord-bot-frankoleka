@@ -1,0 +1,26 @@
+{
+  "name": "discord-bot-frankoleka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RVCC-IDMX/discord-bot-frankoleka.git"
+  },
+  "keywords": [],
+  "author": "Franko Leka <franko9leka@gmail.com> (https://github.com/frankoleka)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RVCC-IDMX/discord-bot-frankoleka/issues"
+  },
+  "homepage": "https://github.com/RVCC-IDMX/discord-bot-frankoleka#readme",
+  "dependencies": {
+    "discord.js": "^14.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0"
+  }
+}
