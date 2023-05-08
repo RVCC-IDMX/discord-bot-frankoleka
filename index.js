@@ -31,6 +31,7 @@ client.once(Events.ClientReady, () => {
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
+	console.log(interaction);
 
 	const command = client.commands.get(interaction.commandName);
 
@@ -47,6 +48,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		else {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
+	}
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'ping') {
+		await interaction.reply({ content: 'Secret Pong!', ephemeral: true });
 	}
 });
 
