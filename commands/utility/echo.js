@@ -7,13 +7,17 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('input')
 				.setDescription('The input to echo back')
-			// Ensure the text will fit in an embed description, if the user chooses that option
+				.setRequired(true)
+				// Ensure the text will fit in an embed description, if the user chooses that option
 				.setMaxLength(2000))
-		.addBooleanOption(option =>
-			option.setName('ephemeral')
-				.setDescription('Whether or not the echo should be ephemeral')),
-	async execute(client, interaction) {
-		console.log(interaction);
-		interaction.reply({ content: interaction.optionsgetString('input'), ephermeral: true });
+		.addBooleanOption(option => option.setName('ephemeral')
+			.setDescription('Whether to show the response to everyone or just the user')),
+	async execute(interaction) {
+		// If ephemeral exists, make it true, if not make it false
+		const ephemeralBool = interaction.options.getBoolean('ephemeral') ?? false;
+		const replyObject = {
+			content: interaction.options.getString('input'), ephemeral: ephemeralBool,
+		};
+		await interaction.reply(replyObject);
 	},
 };
