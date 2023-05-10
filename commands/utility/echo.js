@@ -15,8 +15,14 @@ module.exports = {
 	async execute(interaction) {
 		// If ephemeral exists, make it true, if not make it false
 		const ephemeralBool = interaction.options.getBoolean('ephemeral') ?? false;
+		const input = interaction.options.getString('input');
+		let content = input;
+		if (content.length > 25) {
+			content = 'Message too many characters';
+		}
 		const replyObject = {
-			content: interaction.options.getString('input'), ephemeral: ephemeralBool,
+			content: content,
+			ephemeral: ephemeralBool,
 		};
 		await interaction.reply(replyObject);
 	},

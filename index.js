@@ -2,7 +2,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
-const cowsay = require('cowsay');
 
 // Require the necessary discord.js classes
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -49,22 +48,6 @@ client.on(Events.InteractionCreate, async interaction => {
 		else {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
-	}
-});
-
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		await interaction.reply({ content: 'Secret Pong!', ephemeral: true });
-	}
-});
-
-client.on('interactionCreate', async (interaction) => {
-	if (interaction.commandName === 'cowsay') {
-		const text = interaction.options.getString('text');
-		const cow = cowsay.say({ text });
-		await interaction.reply(`\`\`\`${cow}\`\`\``);
 	}
 });
 
